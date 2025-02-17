@@ -1223,7 +1223,7 @@ class MainWindow(QMainWindow):
     def updatePlaces(self):
         self.places.clear()
         self.addPlace(_('Global'), '', '')
-        self.addPlace(_('Root'), '/', 'computer')
+        self.addPlace(_('Root'), 'Filesystem Root', 'computer')
         self.addPlace(_('Home'), os.path.expanduser('~'), 'user-home')
 
         # "Now" or a specific snapshot selected?
