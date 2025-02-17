@@ -1201,7 +1201,10 @@ class MainWindow(QMainWindow):
         if icon:
             item.setIcon(0, QIcon.fromTheme(icon))
 
-        item.setData(0, Qt.ItemDataRole.UserRole, path)
+        if path == "Filesystem Root":
+            item.setData(0, Qt.ItemDataRole.UserRole, '/')
+        else:
+            item.setData(0, Qt.ItemDataRole.UserRole, path)
 
         if not path:
             item.setFont(0, qttools.fontBold(item.font(0)))
@@ -1891,7 +1894,10 @@ class MainWindow(QMainWindow):
             self.stackFilesView.setCurrentWidget(self.lblFolderDontExists)
 
         # show current path
-        self.widget_current_path.setText(self.path)
+        if self.path == '/':
+            self.widget_current_path.setText('Filesystem Root')
+        else:
+            self.widget_current_path.setText(self.path)
         self.act_restore_parent.setText(
             _('Restore {path}').format(path=self.path))
         self.act_restore_parent_to.setText(

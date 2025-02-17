@@ -636,7 +636,10 @@ class GeneralTab(QDialog):
                 # Why?
                 self.config.removeProfileKey('snapshots.path.uuid')
 
-            self.editSnapshotsPath.setText(self.config.preparePath(path))
+            if self.config.preparePath(path) == '/':
+                self.editSnapshotsPath.setText('Filesystem Root')
+            else: 
+                self.editSnapshotsPath.setText(self.config.preparePath(path))
 
     def _slot_ssh_private_key_file_clicked(self):
         old_file = self.txtSshPrivateKeyFile.text()
